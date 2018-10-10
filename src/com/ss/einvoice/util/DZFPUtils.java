@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Random;
 import java.util.Set;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -103,28 +104,6 @@ public class DZFPUtils {
 		}
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(requestUrl);
-		System.out.println(appid);
-		System.out.println(contentPassword);
-		System.out.println(nsrsbh);
-		System.out.println(xsf_mc);
-		System.out.println(xsf_dzdh);
-		System.out.println(xsf_yhzh);
-		System.out.println(KEY_STORE_FILE);
-		System.out.println(KEY_STORE_PASS);
-		System.out.println(TRUST_STORE_FILE);
-		System.out.println(TRUST_STORE_PASS);
-		System.out.println(fpqqlsh_prefix);
-		System.out.println(interfacelanguage);
-		System.out.println(fp_kj_required_fields);
-		System.out.println(fp_kj_xx_required_fields);
-		System.out.println(normal_sl);
-		System.out.println(kpr);
-		System.out.println(person_info_file);
-		System.out.println(goods);
-	}
-	
 	/**
 	 * 根据环境来获取相关的配置
 	 * @param env 环境，on：生产；off：测试。
@@ -156,8 +135,8 @@ public class DZFPUtils {
 	 * @return
 	 */
 	public static String getFPQQLSH(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		return fpqqlsh_prefix+sdf.format(new Date());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmssSSS");
+		return fpqqlsh_prefix+sdf.format(new Date())+String.valueOf(new Random().nextInt(10));
 	}
 	
 	/**
